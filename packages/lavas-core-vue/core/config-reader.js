@@ -33,7 +33,6 @@ const DEFAULT_CONFIG = {
             fonts: 'fonts/[name].[hash:8].[ext]'
         },
         babel: {
-            presets: ['vue-app'],
             babelrc: false
         },
         cssExtract: false,
@@ -117,7 +116,8 @@ export const RUMTIME_ITEMS = {
     build: {
         ssr: true,
         publicPath: true,
-        compress: true
+        compress: true,
+        cssExtract: true
     },
     middleware: true,
     router: true,

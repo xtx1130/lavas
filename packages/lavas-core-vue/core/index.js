@@ -24,12 +24,16 @@ export default class LavasCore extends EventEmitter {
      * @param {string} env NODE_ENV
      * @param {boolean} isInBuild is in build process
      * @param {Object} options options
-     * @param {string} options.config custom config file path
+     * @param {string} options.config custom config file absolute path
      */
     async init(env, isInBuild, options = {}) {
         this.env = env;
         this.isProd = this.env === 'production';
         this.configReader = new ConfigReader(this.cwd, this.env, options.config);
+
+        if (!process.env.NODE_ENV) {
+            process.env.NODE_ENV = env;
+        }
 
         /**
          * in a build process, we need to read config by scan a directory,
